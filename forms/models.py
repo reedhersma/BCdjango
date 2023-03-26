@@ -16,6 +16,11 @@ class Order(models.Model):
 
     def __str__(self):
        return f'{self.name} {self.order_date.strftime("(%m-%d-%Y @ %H:%M:%S)")}'
+    
+    # return all products attached to a given order
+    def products(self):
+       product_ids = ProductOrder.objects.filter(order_id=self.id).values_list('product_id', flat=True)
+       return Product.objects.filter(id__in=product_ids)
 
 class ProductOrder(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
