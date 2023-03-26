@@ -1,3 +1,6 @@
+# CLB - hide django .env files
+BandanaCoffee/.env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
