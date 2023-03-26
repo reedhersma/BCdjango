@@ -13,9 +13,5 @@ class Order (models.Model):
     order_total = models.IntegerField()
 
 class ProductOrder (models.Model):
-    product = models.Charfield(Product.name)
-    client = models.CharField(Order.name)
-    email = models.CharField(Order.email)
-    phone = models.CharField(Order.phone)
-    Order_date = models.CharField(Order.Order_date)
-    order_total = models.CharField(Order.order_total)
+    product = models.ForeignKey(Product)
+    order = models.ForeignKey(Order)
