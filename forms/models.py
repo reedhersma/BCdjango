@@ -6,6 +6,10 @@ class Product(models.Model):
 
     def __str__(self):
       return self.name
+    
+    def orders(self):
+        order_ids = ProductOrder.objects.filter(product_id=self.id).values_list('order_id', flat=True)
+        return Order.objects.filter(id__in=order_ids)
 
 class Order(models.Model):
     name = models.CharField(max_length=200)
@@ -27,4 +31,4 @@ class ProductOrder(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     
     def __str__(self):
-       return f'{self.order}, {self.product}'
+        return f'{self.order}, {self.product}'
