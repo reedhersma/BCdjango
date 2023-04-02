@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 # CLB - import environ to read environment variables located in same dir
-import environ
-env = environ.Env()
-environ.Env.read_env()
+import os
+env = os.environ.Env()
+os.environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'forms.apps.FormsConfig'
+    'sales.apps.SalesConfig'
 ]
 
 MIDDLEWARE = [
